@@ -1,33 +1,46 @@
-## Windows 10 PC 安装 Docker Desktop CE
+# Windows 10 安装 Docker
 
-### 系统要求
+## 系统要求
 
-[Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/) 支持 64 位版本的 Windows 10 Pro，且必须开启 Hyper-V。
+[Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/) 支持 64 位版本的 Windows 10 Pro，且必须开启 Hyper-V（若版本为 v1903 及以上则无需开启 Hyper-V），或者 64 位版本的 Windows 10 Home v1903 及以上版本。
 
-### 安装
+## 安装
 
-点击以下链接下载 [Stable](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe) 或 [Edge](https://download.docker.com/win/edge/Docker%20Desktop%20Installer.exe) 版本的 Docker Desktop for Windows。
+**手动下载安装**
+
+点击以下 [链接](https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe) 下载 Docker Desktop for Windows。
 
 下载好之后双击 `Docker Desktop Installer.exe` 开始安装。
 
-### 运行
+**使用 [winget](https://docs.microsoft.com/zh-cn/windows/package-manager/) 安装**
 
-在 Windows 搜索栏输入 Docker 点击 Docker for Windows 开始运行。
+```powershell
+$ winget install Docker.DockerDesktop
+```
 
-![](_images/install-win-docker-app-search.png)
+## 在 WSL2 运行 Docker 
 
-Docker CE 启动之后会在 Windows 任务栏出现鲸鱼图标。
+若你的 Windows 版本为 Windows 10 专业版或家庭版 v1903 及以上版本可以使用 WSL2 运行 Docker，具体请查看 [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/)。
 
-![](_images/install-win-taskbar-circle.png)
+## 运行
 
-等待片刻，点击 Got it 开始使用 Docker CE。
+在 Windows 搜索栏输入 **Docker** 点击 **Docker Desktop** 开始运行。
 
-![](_images/install-win-success-popup-cloud.png)
+![](./_images/install-win-docker-app-search.png)
 
-### 镜像加速
+Docker 启动之后会在 Windows 任务栏出现鲸鱼图标。
+
+![](./_images/install-win-taskbar-circle.png)
+
+等待片刻，当鲸鱼图标静止时，说明 Docker 启动成功，之后你可以打开 PowerShell 使用 Docker。
+
+> 推荐使用 [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/get-started) 在终端使用 Docker。
+
+## 镜像加速
 
 如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker [国内镜像加速](mirror.md)。
 
-### 参考链接
+## 参考链接
 
 * [官方文档](https://docs.docker.com/docker-for-windows/install/)
+* [WSL 2 Support is coming to Windows 10 Versions 1903 and 1909](https://devblogs.microsoft.com/commandline/wsl-2-support-is-coming-to-windows-10-versions-1903-and-1909/)

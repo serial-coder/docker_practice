@@ -1,12 +1,12 @@
-## 构建多种系统架构支持的 Docker 镜像 -- docker manifest 命令详解
+# 构建多种系统架构支持的 Docker 镜像 -- docker manifest 命令详解
 
 我们知道使用镜像创建一个容器，该镜像必须与 Docker 宿主机系统架构一致，例如 `Linux x86_64` 架构的系统中只能使用 `Linux x86_64` 的镜像创建容器。
 
-> macOS 除外，其使用了 [binfmt_misc](https://docs.docker.com/docker-for-mac/multi-arch/) 提供了多种架构支持，在 macOS 系统上 (x86_64) 可以运行 arm 等其他架构的镜像。
+> Windows、macOS 除外，其使用了 [binfmt_misc](https://docs.docker.com/docker-for-mac/multi-arch/) 提供了多种架构支持，在 Windows、macOS 系统上 (x86_64) 可以运行 arm 等其他架构的镜像。
 
 例如我们在 `Linux x86_64` 中构建一个 `username/test` 镜像。
 
-```Dockerfile
+```docker
 FROM alpine
 
 CMD echo 1
@@ -24,31 +24,17 @@ $ docker run -it --rm username/test
 
 这样做显得很繁琐，那么有没有一种方法让 Docker 引擎根据系统架构自动拉取对应的镜像呢？
 
-我们发现在 `Linux x86_64` 和 `Linux arm64v8` 架构的计算机中执行 `$ docker run golang:alpine go version` 时我们发现可以正确的运行。
+我们发现在 `Linux x86_64` 和 `Linux arm64v8` 架构的计算机中分别使用 `golang:alpine` 镜像运行容器 `$ docker run golang:alpine go version` 时，容器能够正常的运行。
 
 这是什么原因呢？
 
-原因就是 `golang:alpine` 官方镜像有一个 [`manifest` 列表](https://docs.docker.com/registry/spec/manifest-v2-2/)。
+原因就是 `golang:alpine` 官方镜像有一个 [`manifest` 列表 (`manifest list`)](https://docs.docker.com/registry/spec/manifest-v2-2/)。
 
 当用户获取一个镜像时，Docker 引擎会首先查找该镜像是否有 `manifest` 列表，如果有的话 Docker 引擎会按照 Docker 运行环境（系统及架构）查找出对应镜像（例如 `golang:alpine`）。如果没有的话会直接获取镜像（例如上例中我们构建的 `username/test`）。
 
 我们可以使用 `$ docker manifest inspect golang:alpine` 查看这个 `manifest` 列表的结构。
 
-由于该命令属于实验特性，必须设置如下 **环境变量** 之后才能使用：
-
-```bash
-# Linux、macOS
-
-$ export DOCKER_CLI_EXPERIMENTAL=enabled
-
-# Windows
-
-$ set $env:DOCKER_CLI_EXPERIMENTAL=enabled
-```
-
-> 以上是设置环境变量的临时方法，若使环境变量永久生效请读者自行设置。
-
-设置之后，执行结果如下
+> 该命令属于实验特性，请参考 [开启实验特性](../install/experimental) 一节。
 
 ```bash
 $ docker manifest inspect golang:alpine
@@ -123,11 +109,11 @@ $ docker manifest inspect golang:alpine
 
 下面介绍如何使用 `$ docker manifest` 命令创建并推送 `manifest` 列表到 Docker Hub。
 
-### 构建镜像
+## 构建镜像
 
 首先在 `Linux x86_64` 构建 `username/x8664-test` 镜像。并在 `Linux arm64v8` 中构建 `username/arm64v8-test` 镜像，构建好之后推送到 Docker Hub。
 
-### 创建 `manifest` 列表
+## 创建 `manifest` 列表
 
 ```bash
 # $ docker manifest create MANIFEST_LIST MANIFEST [MANIFEST...]
@@ -136,9 +122,9 @@ $ docker manifest create username/test \
       username/arm64v8-test
 ```
 
-当要修改一个 `manifest` 列表时，可以加入 `-a,--amend` 参数。
+当要修改一个 `manifest` 列表时，可以加入 `-a` 或 `--amend` 参数。
 
-### 设置 `manifest` 列表
+## 设置 `manifest` 列表
 
 ```bash
 # $ docker manifest annotate [OPTIONS] MANIFEST_LIST MANIFEST
@@ -153,13 +139,13 @@ $ docker manifest annotate username/test \
 
 这样就配置好了 `manifest` 列表。
 
-### 查看 `manifest` 列表
+## 查看 `manifest` 列表
 
 ```bash
 $ docker manifest inspect username/test
 ```
 
-### 推送 `manifest` 列表
+## 推送 `manifest` 列表
 
 最后我们可以将其推送到 Docker Hub。
 
@@ -167,12 +153,12 @@ $ docker manifest inspect username/test
 $ docker manifest push username/test
 ```
 
-### 测试
+## 测试
 
 我们在 `Linux x86_64` `Linux arm64v8` 中分别执行 `$ docker run -it --rm username/test` 命令，发现可以正确的执行。
 
-### 官方博客
+## 官方博客
 
 详细了解 `manifest` 可以阅读官方博客。
 
-* https://blog.docker.com/2017/11/multi-arch-all-the-things/
+* https://www.docker.com/blog/multi-arch-all-the-things/

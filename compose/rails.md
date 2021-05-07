@@ -1,4 +1,4 @@
-## 使用 Rails
+# 使用 Rails
 
 > 本小节内容适合 `Ruby` 开发人员阅读。
 
@@ -8,7 +8,7 @@
 
 首先，因为应用将要运行在一个满足所有环境依赖的 Docker 容器里面，那么我们可以通过编辑 `Dockerfile` 文件来指定 Docker 容器要安装内容。内容如下：
 
-```dockerfile
+```docker
 FROM ruby
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 RUN mkdir /myapp
@@ -45,8 +45,6 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
-    links:
-      - db
 ```
 
 所有文件就绪后，我们就可以通过使用 `docker-compose run` 命令生成应用的骨架了。
@@ -117,5 +115,3 @@ $ docker-compose run web rake db:create
 ```
 
 这个 web 应用已经开始在你的 docker 守护进程里面监听着 3000 端口了。
-
-![](../_images/docker-compose-rails-screenshot.png)

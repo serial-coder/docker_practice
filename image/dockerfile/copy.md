@@ -1,4 +1,4 @@
-### COPY 复制文件
+# COPY 复制文件
 
 格式：
 
@@ -9,13 +9,13 @@
 
 `COPY` 指令将从构建上下文目录中 `<源路径>` 的文件/目录复制到新的一层的镜像内的 `<目标路径>` 位置。比如：
 
-```Dockerfile
+```docker
 COPY package.json /usr/src/app/
 ```
 
 `<源路径>` 可以是多个，甚至可以是通配符，其通配符规则要满足 Go 的 [`filepath.Match`](https://golang.org/pkg/path/filepath/#Match) 规则，如：
 
-```Dockerfile
+```docker
 COPY hom* /mydir/
 COPY hom?.txt /mydir/
 ```
@@ -26,9 +26,11 @@ COPY hom?.txt /mydir/
 
 在使用该指令的时候还可以加上 `--chown=<user>:<group>` 选项来改变文件的所属用户及所属组。
 
-```Dockerfile
+```docker
 COPY --chown=55:mygroup files* /mydir/
 COPY --chown=bin files* /mydir/
 COPY --chown=1 files* /mydir/
 COPY --chown=10:11 files* /mydir/
 ```
+
+如果源路径为文件夹，复制的时候不是直接复制该文件夹，而是将文件夹中的内容复制到目标路径。

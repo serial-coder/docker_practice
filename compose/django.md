@@ -1,4 +1,4 @@
-## 使用 Django
+# 使用 Django
 
 > 本小节内容适合 `Python` 开发人员阅读。
 
@@ -8,7 +8,7 @@
 
 第一步，因为应用将要运行在一个满足所有环境依赖的 Docker 容器里面，那么我们可以通过编辑 `Dockerfile` 文件来指定 Docker 容器要安装内容。内容如下：
 
-```dockerfile
+```docker
 FROM python:3
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
@@ -35,6 +35,8 @@ services:
 
   db:
     image: postgres
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
 
   web:
     build: .
@@ -43,8 +45,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    links:
-      - db
 ```
 
 查看 [`docker-compose.yml` 章节](compose_file.md) 了解更多详细的工作机制。
@@ -80,6 +80,7 @@ DATABASES = {
         'USER': 'postgres',
         'HOST': 'db',
         'PORT': 5432,
+        'PASSWORD': 'postgres',
     }
 }
 ```

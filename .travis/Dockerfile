@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:14.4.0-alpine
 
 ENV TZ=Asia/Shanghai
 
@@ -8,8 +8,8 @@ COPY book.json book.json
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
-RUN apk add --no-cache \
-          tzdata \
+RUN set -x && apk add --no-cache \
+          tzdata bash \
       && npm install -g gitbook-cli \
       && gitbook install \
       && ln -s /usr/local/bin/docker-entrypoint.sh / \

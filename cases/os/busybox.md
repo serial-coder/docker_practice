@@ -1,16 +1,16 @@
-## Busybox
+# Busybox
 
-### 简介
+## 简介
 
-![Busybox - Linux 瑞士军刀](_images/busybox-logo.png)
+![Busybox - Linux 瑞士军刀](./_images/busybox-logo.png)
 
-BusyBox 是一个集成了一百多个最常用 Linux 命令和工具（如 cat、echo、grep、mount、telnet 等）的精简工具箱，它只需要几 MB 的大小，很方便进行各种快速验证，被誉为“Linux 系统的瑞士军刀”。
+`BusyBox` 是一个集成了一百多个最常用 Linux 命令和工具（如 `cat`、`echo`、`grep`、`mount`、`telnet` 等）的精简工具箱，它只需要几 MB 的大小，很方便进行各种快速验证，被誉为“Linux 系统的瑞士军刀”。
 
-BusyBox 可运行于多款 POSIX 环境的操作系统中，如 Linux（包括 Android）、Hurd、FreeBSD 等。
+`BusyBox` 可运行于多款 `POSIX` 环境的操作系统中，如 `Linux`（包括 `Android`）、`Hurd`、`FreeBSD` 等。
 
-### 获取官方镜像
+## 获取官方镜像
 
-在 Docker Hub 中搜索 busybox 相关的镜像。
+在 `Docker Hub` 中搜索 `busybox` 相关的镜像。
 
 ```bash
 $ docker search busybox
@@ -24,19 +24,18 @@ azukiapp/busybox                This image is meant to be used as the base...   
 ...
 ```
 
-读者可以看到最受欢迎的镜像同时带有 OFFICIAL 标记，说明它是官方镜像。用户使用 docker pull 指令下载镜像 `busybox:latest`：
+读者可以看到最受欢迎的镜像同时带有 `OFFICIAL` 标记，说明它是官方镜像。用户使用 `docker pull` 指令下载 `busybox:latest` 镜像：
 
 ```bash
 $ docker pull busybox:latest
-busybox:latest: The image you are pulling has been verified
-e433a6c5b276: Pull complete
-e72ac664f4f0: Pull complete
-511136ea3c5a: Pull complete
-df7546f9f060: Pull complete
+latest: Pulling from library/busybox
+5c4213be9af9: Pull complete
+Digest: sha256:c6b45a95f932202dbb27c31333c4789f45184a744060f6e569cc9d2bf1b9ad6f
 Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
 ```
 
-下载后，可以看到 busybox 镜像只有2.433 MB：
+下载后，可以看到 `busybox` 镜像只有 **2.433 MB**：
 
 ```bash
 $ docker image ls
@@ -44,9 +43,9 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 busybox                   latest              e72ac664f4f0        6 weeks ago         2.433 MB
 ```
 
-### 运行 busybox
+## 运行 busybox
 
-启动一个 busybox 容器，并在容器中执行 grep 命令。
+启动一个 `busybox` 容器，并在容器中执行 `grep` 命令。
 
 ```bash
 $ docker run -it busybox
@@ -85,27 +84,44 @@ Search for PATTERN in FILEs (or stdin)
 
 ```bash
 / # mount
-rootfs on / type rootfs (rw)
-none on / type aufs (rw,relatime,si=b455817946f8505c)
+overlay on / type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/BOTCI5RF24AMC4A2UWF4N6ZWFP:/var/lib/docker/overlay2/l/TWVP5T5DMKJGXZOROR7CAPWGFP,upperdir=/var/lib/docker/overlay2/801ef0bf6cce35288dbb8fe00a4f9cc47760444693bfdf339ed0bdcf926e12a3/diff,workdir=/var/lib/docker/overlay2/801ef0bf6cce35288dbb8fe00a4f9cc47760444693bfdf339ed0bdcf926e12a3/work)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
-tmpfs on /dev type tmpfs (rw,nosuid,mode=755)
-shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755)
 devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
 sysfs on /sys type sysfs (ro,nosuid,nodev,noexec,relatime)
-/dev/disk/by-uuid/b1f2dba7-d91b-4165-a377-bf1a8bed3f61 on /etc/resolv.conf type ext4 (rw,relatime,errors=remount-ro,data=ordered)
-/dev/disk/by-uuid/b1f2dba7-d91b-4165-a377-bf1a8bed3f61 on /etc/hostname type ext4 (rw,relatime,errors=remount-ro,data=ordered)
-/dev/disk/by-uuid/b1f2dba7-d91b-4165-a377-bf1a8bed3f61 on /etc/hosts type ext4 (rw,relatime,errors=remount-ro,data=ordered)
-devpts on /dev/console type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
-proc on /proc/sys type proc (ro,nosuid,nodev,noexec,relatime)
-proc on /proc/sysrq-trigger type proc (ro,nosuid,nodev,noexec,relatime)
-proc on /proc/irq type proc (ro,nosuid,nodev,noexec,relatime)
-proc on /proc/bus type proc (ro,nosuid,nodev,noexec,relatime)
-tmpfs on /proc/kcore type tmpfs (rw,nosuid,mode=755)
+tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,relatime,mode=755)
+cgroup on /sys/fs/cgroup/systemd type cgroup (ro,nosuid,nodev,noexec,relatime,xattr,release_agent=/lib/systemd/systemd-cgroups-agent,name=systemd)
+cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (ro,nosuid,nodev,noexec,relatime,net_cls,net_prio)
+cgroup on /sys/fs/cgroup/freezer type cgroup (ro,nosuid,nodev,noexec,relatime,freezer)
+cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (ro,nosuid,nodev,noexec,relatime,cpu,cpuacct)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (ro,nosuid,nodev,noexec,relatime,cpuset)
+cgroup on /sys/fs/cgroup/blkio type cgroup (ro,nosuid,nodev,noexec,relatime,blkio)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (ro,nosuid,nodev,noexec,relatime,perf_event)
+cgroup on /sys/fs/cgroup/memory type cgroup (ro,nosuid,nodev,noexec,relatime,memory)
+cgroup on /sys/fs/cgroup/devices type cgroup (ro,nosuid,nodev,noexec,relatime,devices)
+cgroup on /sys/fs/cgroup/pids type cgroup (ro,nosuid,nodev,noexec,relatime,pids)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+/dev/vda1 on /etc/resolv.conf type ext3 (rw,noatime,data=ordered)
+/dev/vda1 on /etc/hostname type ext3 (rw,noatime,data=ordered)
+/dev/vda1 on /etc/hosts type ext3 (rw,noatime,data=ordered)
+devpts on /dev/console type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+proc on /proc/bus type proc (ro,relatime)
+proc on /proc/fs type proc (ro,relatime)
+proc on /proc/irq type proc (ro,relatime)
+proc on /proc/sys type proc (ro,relatime)
+proc on /proc/sysrq-trigger type proc (ro,relatime)
+tmpfs on /proc/acpi type tmpfs (ro,relatime)
+tmpfs on /proc/kcore type tmpfs (rw,nosuid,size=65536k,mode=755)
+tmpfs on /proc/keys type tmpfs (rw,nosuid,size=65536k,mode=755)
+tmpfs on /proc/timer_list type tmpfs (rw,nosuid,size=65536k,mode=755)
+tmpfs on /proc/sched_debug type tmpfs (rw,nosuid,size=65536k,mode=755)
+tmpfs on /sys/firmware type tmpfs (ro,relatime)
 ```
 
-busybox 镜像虽然小巧，但包括了大量常见的 Linux 命令，读者可以用它快速熟悉 Linux 命令。
+`busybox` 镜像虽然小巧，但包括了大量常见的 `Linux` 命令，读者可以用它快速熟悉 `Linux` 命令。
 
-### 相关资源
+## 相关资源
 
 * `Busybox` 官网：https://busybox.net/
 * `Busybox` 官方仓库：https://git.busybox.net/busybox/

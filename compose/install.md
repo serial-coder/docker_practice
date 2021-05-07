@@ -1,4 +1,4 @@
-## 安装与卸载
+# 安装与卸载
 
 `Compose` 支持 Linux、macOS、Windows 10 三大平台。
 
@@ -9,24 +9,27 @@
 ```bash
 $ docker-compose --version
 
-docker-compose version 1.24.1, build 4667896b
+docker-compose version 1.27.4, build 40524192
 ```
 
 Linux 系统请使用以下介绍的方法安装。
 
-### 二进制包
+## 二进制包
 
 在 Linux 上的也安装十分简单，从 [官方 GitHub Release](https://github.com/docker/compose/releases) 处直接下载编译好的二进制文件即可。
 
 例如，在 Linux 64 位系统上直接下载对应的二进制包。
 
 ```bash
-$ sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+# 国内用户可以使用以下方式加快下载
+$ sudo curl -L https://download.fastgit.org/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 $ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### PIP 安装
+## PIP 安装
 
 *注：* `x86_64` 架构的 Linux 建议按照上边的方法下载二进制包进行安装，如果您计算机的架构是 `ARM` (例如，树莓派)，再使用 `pip` 安装。
 
@@ -42,18 +45,18 @@ $ sudo pip install -U docker-compose
 
 ```bash
 Collecting docker-compose
-  Downloading docker-compose-1.24.1.tar.gz (149kB): 149kB downloaded
+  Downloading docker-compose-1.27.4.tar.gz (149kB): 149kB downloaded
 ...
 Successfully installed docker-compose cached-property requests texttable websocket-client docker-py dockerpty six enum34 backports.ssl-match-hostname ipaddress
 ```
 
-### bash 补全命令
+## bash 补全命令
 
 ```bash
-$ curl -L https://raw.githubusercontent.com/docker/compose/1.24.1/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
+$ curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
 ```
 
-### 卸载
+## 卸载
 
 如果是二进制包方式安装的，删除二进制文件即可。
 
