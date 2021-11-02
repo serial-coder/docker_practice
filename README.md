@@ -51,7 +51,7 @@ Docker 自身仍在快速发展中，生态环境也在蓬勃成长。建议初�
 * QQ 群 IX  （已满）：571502246
 * QQ 群 X   （可加）：145983035
 
->如果有容器相关的疑问，请通过 [Issues](https://github.com/yeasy/docker_practice/issues/new/choose) 来提出。
+>如果有容器技术相关的疑问，请通过 [Issues](https://github.com/yeasy/docker_practice/issues/new/choose) 来提出。
 
 ## 进阶学习
 
@@ -70,4 +70,4 @@ Docker 自身仍在快速发展中，生态环境也在蓬勃成长。建议初�
 
 <p align="center"><strong>欢迎鼓励项目一杯 coffee~</strong></p>
 
-[1]: https://union-click.jd.com/jdc?e=&p=AyIGZRtYFAcXBFIZWR0yEgRQH1kXAhs3EUQDS10iXhBeGlcJDBkNXg9JHU4YDk5ER1xOGRNLGEEcVV8BXURFUFdfC0RVU1JRUy1OVxUBFwNXGVscMlVYLlAaXAV1Z1JHA0dWEHVXZTliY1QLWStaJQAWB10fXhwKEDdlG1wlUHzf462DsLMO0%2F%2BUjp2VIgZlG18RBBcCUBlbEAoTBWUcWxwySVI7HAhBBxEOBUgOFQYQUGUraxYyIjdVK1glQHxXUEhYEVEUUFQcC0IHGgRRSAgVARAPAhsLFgNCDl0ZWiUAEwZREg%3D%3D&t=W1dCFFlQCxxKQgFHREkdSVJKSQVJHFRXFk9FUlpGQUpLCVBaTFhbXQtWVmpSWRtYEAYQBVUS
+[1]: https://union-click.jd.com/jdc?e=&p=JF8AANADIgZlGF0VAxUDVBJdHDISBFAfWRcCGzcRRANLXSJeEF4aVwkMGQ1eD0kdSVJKSQVJHBIEUB9ZFwIbGAxeB0gyS34PbFlHVHNkI0MQEAoIcSxyBWFLRAtZK1olABYHXR9eHAoQN2UbXCVQfN_jrYOwsw7T_5SOnZUiBmUbXBYBFwBVG14UBBAAZRxbHDJJUjscCEEHEQ4FSA4VBhBQZStrFjIiN1UrWCVAfARQT1gQA0cFAEwOEAcRDlMTDEALQAFTEwwRUhMAUR1cJQATBlES

@@ -38,8 +38,12 @@ module.exports = config({
     //   onlyFirstAndLastCommit: true,
     // },
   },
+  locales: {
+    "/": {
+      lang: "zh-CN"
+    }
+  },
   themeConfig: {
-    baseLang: 'zh-CN',
     blog: false,
     // comment: false,
     comment: {
@@ -53,17 +57,21 @@ module.exports = config({
       'word',
     ],
     footer: {
-      content: "Made with <a target='_blank' href='https://github.com/mister-hope/vuepress-theme-hope'>vuepress-theme-hope</a>",
+      content: "Made with <a target='_blank' href='https://github.com/vuepress-theme-hope/vuepress-theme-hope'>vuepress-theme-hope</a>",
       display: true,
       copyright: false,
     },
     searchPlaceholder: 'Search',
     repo: 'yeasy/docker_practice',
     repoLabel: 'GitHub',
+    repoDisplay: true,
     hostname: 'https://vuepress.mirror.docker-practice.com',
     // author: 'yeasy',
     mdEnhance: {
       lineNumbers: true,
+    },
+    git: {
+      contributor: false,
     },
     themeColor: {
       blue: '#2196f3',
@@ -71,6 +79,13 @@ module.exports = config({
       // green: '#3eaf7c',
       // orange: '#fb9b5f'
     },
+    locales: {
+      "/": {
+        lang: "zh-CN"
+      }
+    },
+
+    darkmode: 'auto-switch',
 
     //
 
@@ -117,17 +132,17 @@ module.exports = config({
         text: "云计算",
         link: "/cloud/",
       },
-      {
-        text: 'GitHub',
-        link: 'https://github.com/yeasy/docker_practice'
-      },
+      // {
+      //   text: 'GitHub',
+      //   link: 'https://github.com/yeasy/docker_practice'
+      // },
       // {
       //   text: '捐赠',
       //   link: ''
       // },
       {
-        text: '腾讯云2021新春采购节',
-        link: 'https://cloud.tencent.com/act/cps/redirect?redirect=10488&cps_key=3a5255852d5db99dcd5da4c72f05df61&from=activity'
+        text: '云服务器99/元首年特惠',
+        link: 'https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=3a5255852d5db99dcd5da4c72f05df61&from=console'
       },
       // {
       //   text: '语言',
@@ -151,7 +166,7 @@ module.exports = config({
         'design',
         {
           title: "部署 Kubernetes",
-          collapsable: false,
+          collapsable: true,
           children: [
             "setup/",
             "setup/kubeadm",
@@ -162,7 +177,7 @@ module.exports = config({
         },
         {
           title: "Kubernetes 命令行 kubectl",
-          collapsable: false,
+          collapsable: true,
           children: [
             'kubectl/'
           ]
@@ -170,6 +185,7 @@ module.exports = config({
       ],
       '/compose/': [
         'introduction',
+        'v2',
         'install',
         'usage',
         'commands',
@@ -185,7 +201,7 @@ module.exports = config({
         'fedora',
         'centos',
         'raspberry-pi',
-        'offline',
+        // 'offline',
         'mac',
         'windows',
         'mirror',
@@ -216,7 +232,7 @@ module.exports = config({
         'actions/',
         {
           title: "Drone",
-          collapsable: false,
+          collapsable: true,
           children: [
             'drone/',
             'drone/install'
@@ -327,7 +343,7 @@ module.exports = config({
         },
         {
           title: "高级网络配置",
-          collapsable: false,
+          collapsable: true,
           children: [
             'advanced_network/',
             'advanced_network/quick_guide',
@@ -341,7 +357,7 @@ module.exports = config({
         },
         {
           title: "Swarm mode",
-          collapsable: false,
+          collapsable: true,
           children: [
             'swarm_mode/',
             'swarm_mode/overview',
@@ -355,7 +371,7 @@ module.exports = config({
         },
         {
           title: "安全",
-          collapsable: false,
+          collapsable: true,
           children: [
             'security/',
             'security/kernel_ns',
@@ -368,7 +384,7 @@ module.exports = config({
         },
         {
           title: "底层实现",
-          collapsable: false,
+          collapsable: true,
           children: [
             'underly/',
             'underly/arch',
@@ -391,7 +407,7 @@ module.exports = config({
         },
         {
           title: "Etcd",
-          collapsable: false,
+          collapsable: true,
           children: [
             'etcd/',
             'etcd/intro',
@@ -402,7 +418,7 @@ module.exports = config({
         },
         {
           title: "Fedora CoreOS",
-          collapsable: false,
+          collapsable: true,
           children: [
             'coreos/',
             'coreos/intro',
@@ -413,7 +429,7 @@ module.exports = config({
         'appendix/faq/',
         {
           title: "热门镜像介绍",
-          collapsable: false,
+          collapsable: true,
           children: [
             'appendix/repo/',
             'appendix/repo/ubuntu',
@@ -430,7 +446,7 @@ module.exports = config({
         },
         {
           title: "Docker 命令",
-          collapsable: false,
+          collapsable: true,
           children: [
             'appendix/command/',
             'appendix/command/docker',

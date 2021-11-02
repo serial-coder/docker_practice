@@ -25,7 +25,6 @@ jobs:
           "192.168.199.100",\
           "github.com/settings",\
           "github.com/docker/compose/releases/download",\
-          "github.com/docker/machine/releases/download",\
           "github.com/etcd-io/etcd/releases/download",\
           "github.com/tianon/gosu/releases/download",\
           "github.com/yeasy/docker_practice",\
@@ -58,13 +57,13 @@ jobs:
           "product.china-pub.com",\
           "union-click.jd.com",\
           "x.x.x.x/base",\
-          "x.x.x.x:9000/minio/",\
+          "x.x.x.x:9090",\
           "yeasy.gitbooks.io",\
           "download.fastgit.org",\
           "www.aliyun.com" \
           --allow-dupe \
           --skip-save-results \
           -t 10 \
-          `find . \( -path "./mesos" -o -path "./machine" -o -path "./swarm_mode" \) -prune -o -name "*.md" -exec ls {} \;`
+          `find . \( -path "./mesos" -o -path "./swarm_mode" \) -prune -o -name "*.md" -exec ls {} \;`
         name: check-link
         timeout-minutes: 25
